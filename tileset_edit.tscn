@@ -1,0 +1,178 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://roguelikeDungeon_transparent.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[node name="Tiles" type="Node"]
+
+[node name="Floor1" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+flip_v = true
+region = true
+region_rect = Rect2( 289, 170, 16, 16 )
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="WallVertNS" type="Sprite" parent="Walls"]
+
+transform/pos = Vector2( 16, 0 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 187, 17, 16, 16 )
+
+[node name="StaticBody2D1" type="StaticBody2D" parent="Walls/WallVertNS"]
+
+editor/display_folded = true
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Walls/WallVertNS/StaticBody2D1"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="WallHorizEW" type="Sprite" parent="Walls"]
+
+transform/pos = Vector2( 32, 0 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 170, 0, 16, 16 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls/WallHorizEW"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Walls/WallHorizEW/StaticBody2D2"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="CornerNW" type="Sprite" parent="Walls"]
+
+transform/pos = Vector2( 48, 0 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 204, 0, 16, 16 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls/CornerNW"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Walls/CornerNW/StaticBody2D3"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="CornerNE" type="Sprite" parent="Walls"]
+
+transform/pos = Vector2( 64, 0 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 221, 0, 16, 16 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls/CornerNE"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Walls/CornerNE/StaticBody2D4"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="CornerSW" type="Sprite" parent="Walls"]
+
+transform/pos = Vector2( 0, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 204, 17, 16, 16 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Walls/CornerSW"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Walls/CornerSW/StaticBody2D5"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="CornerSE" type="Sprite" parent="Walls"]
+
+transform/pos = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 221, 17, 16, 16 )
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Walls/CornerSE"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Walls/CornerSE/StaticBody2D6"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+
