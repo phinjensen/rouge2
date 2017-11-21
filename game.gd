@@ -4,7 +4,5 @@ extends Node2D
 # var a = 2
 # var b = "textvar"
 
-
 func _ready():
-	
 	pass

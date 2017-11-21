@@ -1,28 +1,42 @@
-extends Sprite
+extends "entity.gd"
 
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
 
-var position = Vector2(1, 1)
-onready var map = get_node("../TileMap")
-const scale = Vector2(32, 32)
+onready var enemy = get_node("../Enemy")
+
+func attack(enemy):
+	enemy.health -= 10
+	if enemy.health <= 0:
+		enemy.free()
+		print("You have slain the enemy!")
+
+func move(direction):
+	var new_position = position
+	if direction == "right":
+		new_position.x += 1
+	elif direction == "left":
+		new_position.x -= 1
+	elif direction == "down":
+		new_position.y += 1
+	elif direction == "up":
+		new_position.y -= 1
+	if enemy.position == new_position:
+		attack(enemy)
+	elif not map.get_tileset().tile_get_shape(map.get_cellv(position)):
+		position = new_position
 
 func _ready():
+	health = 100
+	position = Vector2(1, 1)
 	set_pos(position * scale)
 	set_process_input(true)
 
 func _input(event):
 	if event.type == InputEvent.KEY:
 		var original_position = position
-		if event.is_action_pressed("move_right"):
-			position.x += 1
-		elif event.is_action_pressed("move_left"):
-			position.x -= 1
-		elif event.is_action_pressed("move_down"):
-			position.y += 1
-		elif event.is_action_pressed("move_up"):
-			position.y -= 1
-		if map.get_tileset().tile_get_shape(map.get_cellv(position)):
-			position = original_position
+		for action in ["move_right", "move_left", "move_down", "move_up"]:
+			if event.is_action_pressed(action):
+				move(action.split("_")[-1])
 		set_pos(position * scale)
