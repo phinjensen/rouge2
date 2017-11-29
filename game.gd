@@ -5,4 +5,7 @@ extends Node2D
 # var b = "textvar"
 
 func _ready():
-	pass
+	var enemyscene = load("res://enemy.tscn")
+	var enemy = enemyscene.instance()
+	enemy.add_to_group("enemies")
+	add_child(enemy)

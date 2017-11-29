@@ -10,7 +10,7 @@ func attack(enemy):
 	enemy.health -= 10
 	if enemy.health <= 0:
 		enemy.free()
-		print("You have slain the enemy!")
+		print("deaded him good!")
 
 func move(direction):
 	var new_position = position
@@ -22,9 +22,12 @@ func move(direction):
 		new_position.y += 1
 	elif direction == "up":
 		new_position.y -= 1
-	if enemy.position == new_position:
-		attack(enemy)
-	elif not map.get_tileset().tile_get_shape(map.get_cellv(position)):
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if enemy.position == new_position:
+			print("enemy!")
+			attack(enemy)
+			return
+	if not map.get_tileset().tile_get_shape(map.get_cellv(new_position)):
 		position = new_position
 
 func _ready():
